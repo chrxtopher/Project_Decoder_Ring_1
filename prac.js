@@ -26,33 +26,56 @@ const alphabet = [
   "y",
   "z",
 ];
-let shifted = 2;
+let shift = 2;
 
-const myName = "christopher roddy";
+const myName = "christopher roddy.";
 let copyName = [];
+let newArr = [];
 for (char of myName) {
-  let xChar = alphabet.indexOf(char);
-  if (xChar === -1) {
-    copyName.push(" ");
-  } else {
+  char = char.toLowerCase();
+  if (alphabet.includes(char)) {
+    let xChar = alphabet.indexOf(char);
     copyName.push(xChar);
+  } else {
+    copyName.push(char);
   }
 }
 console.log(copyName);
-let shiftedCopy = copyName
-  .map((num) => num + shifted)
-  .map((number) => adjust(number));
-console.log(shiftedCopy);
 
-let shiftedName = shiftedCopy.map((num) => (num = alphabet[num]));
-console.log(shiftedName);
-
-function adjust(num) {
-  if (num > 25) {
-    let exceeded = num - 25;
-    num = -1 + exceeded;
+for (let i = 0; i < copyName.length; i++) {
+  let chosen = copyName[i];
+  if (chosen === " " || chosen === ".") {
+    newArr.push(chosen);
   } else {
-    num = num;
+    chosen += shift;
+    newArr.push(chosen);
   }
-  return num;
 }
+
+console.log(newArr);
+
+// let shiftedCopy = copyName
+//   .map((num) => num + shifted)
+//   .map((number) => adjust(number));
+
+// let shiftedName = shiftedCopy.map((num) => (num = alphabet[num]));
+
+// for (let i = 0; i < shiftedName.length; i++) {
+//   if (shiftedName[i] === undefined) {
+//     shiftedName[i] = " ";
+//   }
+// }
+
+// let result = shiftedName.join("");
+// console.log(result);
+
+// function adjust(num) {
+//   if (num > 25) {
+//     let tooHigh = num - 25;
+//     num = -1 + tooHigh;
+//   } else if (num < 0) {
+//     let tooLow = num + 25;
+//     num = 25 - tooLow;
+//   }
+//   return num;
+// }
