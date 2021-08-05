@@ -51,31 +51,34 @@ for (let i = 0; i < copyName.length; i++) {
     newArr.push(chosen);
   }
 }
+let shiftedCopy = newArr
+  .map((number) => adjust(number))
+  .map((adjustedNum) => adjust2(adjustedNum));
 
-console.log(newArr);
+console.log(`${shiftedCopy.join("")}`);
 
-// let shiftedCopy = copyName
-//   .map((num) => num + shifted)
-//   .map((number) => adjust(number));
+///////////////////
+///////////////////
 
-// let shiftedName = shiftedCopy.map((num) => (num = alphabet[num]));
+function adjust(num) {
+  if (num === "." || num === " ") {
+    return num;
+  }
+  if (num > 25) {
+    let tooHigh = num - 25;
+    num = -1 + tooHigh;
+  } else if (num < 0) {
+    let tooLow = num + 25;
+    num = 25 - tooLow;
+  }
+  return num;
+}
 
-// for (let i = 0; i < shiftedName.length; i++) {
-//   if (shiftedName[i] === undefined) {
-//     shiftedName[i] = " ";
-//   }
-// }
-
-// let result = shiftedName.join("");
-// console.log(result);
-
-// function adjust(num) {
-//   if (num > 25) {
-//     let tooHigh = num - 25;
-//     num = -1 + tooHigh;
-//   } else if (num < 0) {
-//     let tooLow = num + 25;
-//     num = 25 - tooLow;
-//   }
-//   return num;
-// }
+function adjust2(num) {
+  if (num === "." || num === " ") {
+    return num;
+  } else {
+    num = alphabet[num];
+    return num;
+  }
+}
