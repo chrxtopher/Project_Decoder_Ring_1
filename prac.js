@@ -65,8 +65,7 @@ function adjust(num) {
     return num;
   }
   if (num > 25) {
-    let tooHigh = num - 25;
-    num = -1 + tooHigh;
+    num = num - 26;
   } else if (num < 0) {
     let tooLow = num + 25;
     num = 25 - tooLow;

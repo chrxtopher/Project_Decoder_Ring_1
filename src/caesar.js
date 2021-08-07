@@ -11,60 +11,37 @@ const caesarModule = (function () {
     if (shift === 0 || shift > 25 || shift < -25) {
       return false;
     }
+
     let copyInput = [];
     let newCopy = [];
 
-    if (encode === true) {
-      for (char of input) {
-        char = char.toLowerCase();
-        if (alphabet.includes(char)) {
-          let xChar = alphabet.indexOf(char);
-          copyInput.push(xChar);
-        } else {
-          copyInput.push(char);
-        }
-      }
-
-      for (let i = 0; i < copyInput.length; i++) {
-        if (copyInput[i] === " " || copyInput[i] === ".") {
-          newCopy.push(copyInput[i]);
-        } else {
-          copyInput[i] += shift;
-          newCopy.push(copyInput[i]);
-        }
-      }
-
-      let shiftedCopy = newCopy
-        .map((num) => adjust(num))
-        .map((adjustedNum) => adjust2(adjustedNum));
-
-      return `${shiftedCopy.join("")}`;
-    } else {
-      for (char of input) {
-        char = char.toLowerCase();
-        if (alphabet.includes(char)) {
-          let xChar = alphabet.indexOf(char);
-          copyInput.push(xChar);
-        } else {
-          copyInput.push(char);
-        }
-      }
-
-      for (let i = 0; i < copyInput.length; i++) {
-        if (copyInput[i] === " " || copyInput[i] === ".") {
-          newCopy.push(copyInput[i]);
-        } else {
-          copyInput[i] -= shift;
-          newCopy.push(copyInput[i]);
-        }
-      }
-
-      let shiftedCopy = newCopy
-        .map((num) => adjust(num))
-        .map((adjustedNum) => adjust2(adjustedNum));
-
-      return `${shiftedCopy.join("")}`;
+    if (encode === false) {
+      shift = shift * -1;
     }
+    for (char of input) {
+      char = char.toLowerCase();
+      if (alphabet.includes(char)) {
+        let xChar = alphabet.indexOf(char);
+        copyInput.push(xChar);
+      } else {
+        copyInput.push(char);
+      }
+    }
+
+    for (let i = 0; i < copyInput.length; i++) {
+      if (copyInput[i] === " " || copyInput[i] === ".") {
+        newCopy.push(copyInput[i]);
+      } else {
+        copyInput[i] += shift;
+        newCopy.push(copyInput[i]);
+      }
+    }
+
+    let shiftedCopy = newCopy
+      .map((num) => adjust(num))
+      .map((adjustedNum) => adjust2(adjustedNum));
+
+    return `${shiftedCopy.join("")}`;
   }
   ///
   return {
@@ -110,11 +87,9 @@ function adjust(num) {
     return num;
   }
   if (num > 25) {
-    let tooHigh = num - 25;
-    num = -1 + tooHigh;
+    num = num - 26;
   } else if (num < 0) {
-    let tooLow = num + 25;
-    num = 25 - tooLow;
+    num = num + 26;
   }
   return num;
 }
