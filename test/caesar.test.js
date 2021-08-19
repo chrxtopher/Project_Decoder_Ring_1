@@ -27,7 +27,7 @@ describe("caesar function", () => {
     expect(actual).to.equal(expected);
   });
 
-  it("should allow for shifts that surpass either the end of the alphabet", () => {
+  it("it should allow for shifts that surpass either end of the alphabet", () => {
     const expected = "yzabc";
     const actual = caesar("xyzab", 1, true);
     expect(actual).to.equal(expected);
