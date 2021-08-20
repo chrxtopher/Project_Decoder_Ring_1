@@ -18,30 +18,23 @@ const caesarModule = (function () {
     if (encode === false) {
       shift = shift * -1;
     }
-    for (char of input) {
+    for (let char of input) {
       char = char.toLowerCase();
       if (alphabet.includes(char)) {
-        let xChar = alphabet.indexOf(char);
-        copyInput.push(xChar);
+        copyInput.push(alphabet.indexOf(char));
       } else {
         copyInput.push(char);
       }
     }
 
     for (let i = 0; i < copyInput.length; i++) {
-      if (copyInput[i] === " " || copyInput[i] === ".") {
-        newCopy.push(copyInput[i]);
-      } else {
+      if (copyInput[i] !== " " && copyInput[i] !== ".") {
         copyInput[i] += shift;
-        newCopy.push(copyInput[i]);
       }
+      newCopy.push(copyInput[i]);
     }
 
-    let shiftedCopy = newCopy
-      .map((num) => adjust(num))
-      .map((adjustedNum) => adjust2(adjustedNum));
-
-    return `${shiftedCopy.join("")}`;
+    return newCopy.map(adjust).join("");
   }
   ///
   return {
@@ -91,15 +84,6 @@ function adjust(num) {
   } else if (num < 0) {
     num = num + 26;
   }
-  return num;
-}
-
-function adjust2(num) {
-  if (num === "." || num === " ") {
-    return num;
-  } else {
-    num = alphabet[num];
-    return num;
-  }
+  return alphabet[num];
 }
 module.exports = { caesar: caesarModule.caesar };
