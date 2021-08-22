@@ -20,6 +20,9 @@ const polybiusModule = (function () {
         }
       }
       return splitInput.join("");
+    } else if (checkCompatiblity(input) === false) {
+      return false;
+    } else {
     }
     //////////
   }
@@ -61,5 +64,10 @@ const polybiusSquare = [
   { num: 45, letter: "y" },
   { num: 55, letter: "z" },
 ];
+
+function checkCompatiblity(string) {
+  let lengthCheck = string.split(" ").join("").split("");
+  return (lengthCheck.length / 2) % 1 === 0;
+}
 
 module.exports = { polybius: polybiusModule.polybius };

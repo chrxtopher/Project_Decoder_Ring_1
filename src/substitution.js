@@ -43,8 +43,7 @@ const substitutionModule = (function () {
     }
 
     if (encode === false) {
-      let xInput = numInput.map((num) => changeDecode(num));
-      return xInput.join("");
+      return numInput.map((num) => changeDecode(num)).join("");
     } else {
       // helper function placed below to keep it in scope
       function changeEncode(char) {
@@ -54,9 +53,7 @@ const substitutionModule = (function () {
           return alphabet[char];
         }
       }
-
-      let yInput = copyInput.map((num) => changeEncode(num));
-      return yInput.join("");
+      return copyInput.map((num) => changeEncode(num)).join("");
     }
 
     //////////

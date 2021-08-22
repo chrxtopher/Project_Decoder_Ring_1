@@ -25,4 +25,10 @@ describe("polybius function [personal tests]", () => {
     const actual = polybius("ijjiij");
     expect(actual).to.equal(expected);
   });
+
+  it("when decoding should return false if the length of input is not even", () => {
+    const expected = false;
+    const actual = polybius("12345", false);
+    expect(actual).to.equal(expected);
+  });
 });
