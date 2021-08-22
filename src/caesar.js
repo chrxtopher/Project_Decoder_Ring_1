@@ -20,8 +20,8 @@ const caesarModule = (function () {
     }
     for (let char of input) {
       char = char.toLowerCase();
-      if (realAlphabet.includes(char)) {
-        copyInput.push(realAlphabet.indexOf(char));
+      if (alphabet.includes(char)) {
+        copyInput.push(alphabet.indexOf(char));
       } else {
         copyInput.push(char);
       }
@@ -46,7 +46,7 @@ const caesarModule = (function () {
 //helper functions below//
 //////////////////////////
 
-const realAlphabet = [
+const alphabet = [
   "a",
   "b",
   "c",
@@ -84,6 +84,6 @@ function adjust(num) {
   } else if (num < 0) {
     num = num + 26;
   }
-  return realAlphabet[num];
+  return alphabet[num];
 }
 module.exports = { caesar: caesarModule.caesar };

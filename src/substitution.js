@@ -67,6 +67,10 @@ const substitutionModule = (function () {
   };
 })();
 
+//////////////////////////
+//helper functions below//
+//////////////////////////
+
 const realAlphabet = [
   "a",
   "b",
