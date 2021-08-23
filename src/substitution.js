@@ -41,19 +41,11 @@ const substitutionModule = (function () {
     ];
 
     function changeDecode(char) {
-      if (char === " ") {
-        return char;
-      } else {
-        return realAlphabet[char];
-      }
+      return char === " " ? char : realAlphabet[char];
     }
 
     function changeEncode(char) {
-      if (char === " ") {
-        return char;
-      } else {
-        return alphabet[char];
-      }
+      return char === " " ? char : alphabet[char];
     }
 
     //////////////////////////

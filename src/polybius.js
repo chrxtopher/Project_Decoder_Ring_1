@@ -61,16 +61,17 @@ const polybiusModule = (function () {
     //////////////////////////
 
     if (encode === true) {
-      input = input.toLowerCase();
-      let splitInput = input.split("");
+      let splitInput = input.toLowerCase().split("");
 
       for (let i = 0; i < splitInput.length; i++) {
-        for (let j = 0; j < polybiusSquare.length; j++) {
-          if (splitInput[i] === polybiusSquare[j].letter) {
-            splitInput[i] = polybiusSquare[j].num;
-          }
+        if (splitInput[i] !== " ") {
+          let found = polybiusSquare.find(
+            (coord) => coord.letter === splitInput[i]
+          );
+          splitInput[i] = found.num;
         }
       }
+
       return splitInput.join("");
     } else if (checkCompatiblity(input) === false) {
       return false;
